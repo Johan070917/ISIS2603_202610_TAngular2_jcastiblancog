@@ -1,0 +1,23 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <h5 class="mb-0">Detalle de Ciudad — {{ city.name }}, {{ city.country.name }}</h5>
+  </div>
+  <div class="card-body">
+
+    <div *ngIf="loading" class="text-muted">
+      <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+      Cargando clima...
+    </div>
+
+    <div *ngIf="weatherDetail && !loading">
+      <p class="mb-1"><strong>Temperatura:</strong> {{ weatherDetail.temp_c }} °C</p>
+      <p class="mb-1"><strong>Condición:</strong> {{ weatherDetail.condition }}</p>
+      <p class="mb-0"><strong>Humedad:</strong> {{ weatherDetail.humidity }}%</p>
+    </div>
+
+    <p *ngIf="!loading && !weatherDetail" class="text-muted mb-0">
+      No hay datos de clima disponibles.
+    </p>
+
+  </div>
+</div>
