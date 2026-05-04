@@ -4,20 +4,15 @@
   </div>
   <div class="card-body">
 
-    <div *ngIf="loading" class="text-muted">
-      <div class="spinner-border spinner-border-sm me-2" role="status"></div>
-      Cargando clima...
-    </div>
+    <!-- TODO HU-03: Muestra los datos de clima cuando estén disponibles:
+         - Temperatura: weatherDetail.temp_c °C
+         - Condición: weatherDetail.condition
+         - Humedad: weatherDetail.humidity %
+    -->
 
-    <div *ngIf="weatherDetail && !loading">
-      <p class="mb-1"><strong>Temperatura:</strong> {{ weatherDetail.temp_c }} °C</p>
-      <p class="mb-1"><strong>Condición:</strong> {{ weatherDetail.condition }}</p>
-      <p class="mb-0"><strong>Humedad:</strong> {{ weatherDetail.humidity }}%</p>
-    </div>
+    <!-- TODO HU-03: Muestra un mensaje "No hay datos de clima disponibles" cuando no haya datos -->
 
-    <p *ngIf="!loading && !weatherDetail" class="text-muted mb-0">
-      No hay datos de clima disponibles.
-    </p>
+    <p class="text-muted mb-0">Clima no disponible.</p>
 
   </div>
 </div>
