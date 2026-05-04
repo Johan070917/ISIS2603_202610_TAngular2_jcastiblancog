@@ -1,18 +1,9 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { inject } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { catchError, throwError } from 'rxjs';
+
+/*
+ * Implementar: HU-04 — Interceptor de Errores HTTP
+ */
 
 export const httpErrorInterceptor: HttpInterceptorFn = (req, next) => {
-  const toastr = inject(ToastrService);
-  return next(req).pipe(
-    catchError(error => {
-      if (req.url.includes('weatherapi.com')) {
-        toastr.error('Error al conectar con WeatherAPI. Intente más tarde.');
-      } else {
-        toastr.error(`Error ${error.status}: ${error.message}`);
-      }
-      return throwError(() => error);
-    })
-  );
+  return next(req);
 };
