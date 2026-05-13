@@ -1,6 +1,48 @@
 <div class="card mb-4">
   <div class="card-body">
     <h5 class="card-title">Nueva Ciudad</h5>
-    <p class="text-muted">Formulario por implementar.</p>
+
+    <form (ngSubmit)="save()" #cityForm="ngForm">
+      <div class="mb-3">
+        <label for="cityName" class="form-label">Nombre de la ciudad</label>
+        <input
+          type="text"
+          id="cityName"
+          name="cityName"
+          class="form-control"
+          [(ngModel)]="name"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label for="country" class="form-label">País</label>
+        <select
+          id="country"
+          name="country"
+          class="form-select"
+          [(ngModel)]="selectedCountryId"
+          required>
+          <option [ngValue]="null">-- Seleccione un país --</option>
+          @for (c of countries; track c.id) {
+            <option [ngValue]="c.id">{{ c.name }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!isValid()">
+          Guardar
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="onCancel()">
+          Cancelar
+        </button>
+      </div>
+    </form>
   </div>
 </div>
